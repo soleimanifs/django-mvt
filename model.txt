@@ -1,0 +1,86 @@
+Table user {
+    id int pk
+  username char
+  password char
+  first_name char
+  last_name char
+  email char
+  is_staff bool
+  is_active bool
+  is_superuser bool
+}
+
+Table special_service {
+  id int pk
+  name char
+  content char
+}
+
+Table services {
+  id int pk
+  name char
+  content char
+  statue bool
+  created_at datetime
+  updated_at datetime
+}
+
+Table price {
+  id int pk
+  name char
+  category mmk /////category
+  fee float 
+  features mmk ////features
+  statue bool
+  created_at datetime
+  updated_at datetime
+}
+
+Table features {
+  id int pk 
+  name char
+  statue bool
+  created_at datetime
+  updated_at datetime
+}
+
+Table category {
+  id int pk
+  name char
+  created_at datetime
+  updated_at datetime
+}
+
+Table questions{
+  id int pk
+  question char
+  answer char
+  statue bool
+  created_at datetime
+  updated_at datetime
+}
+
+Table trainers{
+  id int pk
+  user fk ////user
+  skills mmk ///skills
+  content char
+  image image
+  status bool
+  created_at datetime
+  updated_at datetime
+}
+
+Table skills{
+  id int pk
+  name char 
+  created_at datetime
+  updated_at datetime
+}
+Ref: "price"."features" < "features"."id"
+
+Ref: "price"."category" < "category"."id"
+
+Ref: "trainers"."user" < "user"."id"
+
+Ref: "trainers"."skills" < "skills"."id"
